@@ -1,0 +1,56 @@
+[project]
+name = "etymos"
+version = "0.1.0"
+description = "Etymology word2word"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "pandas>=2.3.2",
+    "python-dotenv>=1.1.1",
+    "tqdm>=4.67.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["setuptools", "uv"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+line-length = 88
+target-version = "py39"
+fix = true
+unsafe-fixes = true
+
+[tool.ruff.lint]  # <-- moved here from top-level [tool.ruff]
+extend-select = ["I", "N", "UP", "B", "C4", "SIM", "RUF"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+skip-string-normalization = false
+
+[tool.mypy]
+python_version = "3.9"
+strict = true
+ignore_missing_imports = true
+mypy_path = "src"
+explicit_package_bases = ["src"]
+
+
+[dependency-groups]
+dev = [
+  "ruff",
+  "black",
+  "mypy",
+  "pre-commit",
+  "types-requests",
+  "pandas-stubs",
+  "types-PyYAML",
+  "types-beautifulsoup4",
+  "ipykernel"
+]
