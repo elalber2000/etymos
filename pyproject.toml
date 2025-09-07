@@ -5,8 +5,12 @@ description = "Etymology word2word"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
+    "datasets>=4.0.0",
     "pandas>=2.3.2",
     "python-dotenv>=1.1.1",
+    "torch>=2.8.0",
+    "torchaudio>=2.8.0",
+    "torchvision>=0.23.0",
     "tqdm>=4.67.1",
 ]
 
@@ -40,6 +44,12 @@ strict = true
 ignore_missing_imports = true
 mypy_path = "src"
 explicit_package_bases = ["src"]
+
+[[tool.uv.index]]
+url = "https://pypi.org/simple"
+
+[[tool.uv.index]]
+url = "https://download.pytorch.org/whl/cu121"
 
 
 [dependency-groups]

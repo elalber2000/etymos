@@ -101,13 +101,13 @@ def stream_to_csv(
 ):
     """
     Stream through a large JSONL file and save extracted etymology data to CSV.
-    Columns: lang_origin,word_origin,lang_dest,word_dest,id
+    Columns: lang_origin,word_origin,lang_dest,word_dest,dump_row
     """
     with open(out_csv, "w", newline="", encoding="utf-8") as csvfile:
         logging.info(f"Opened {out_csv}")
         writer = csv.DictWriter(
             csvfile,
-            fieldnames=["lang_origin", "word_origin", "lang_dest", "word_dest", "link_type", "id"]
+            fieldnames=["lang_origin", "word_origin", "lang_dest", "word_dest", "link_type", "dump_row"]
         )
         writer.writeheader()
 
@@ -155,7 +155,7 @@ def stream_to_csv(
                                 "lang_dest": "castellano",
                                 "word_dest": word_dest,
                                 "link_type": "direct" if i_pairs==0 else "indirect",
-                                "id": i,
+                                "dump_row": i,
                             }
                         )
 
@@ -170,7 +170,7 @@ def stream_to_csv(
                                         "lang_dest": prev_lang,
                                         "word_dest": prev_word,
                                         "link_type": "direct",
-                                        "id": i,
+                                        "dump_row": i,
                                     }
                                 )
                         prev_word, prev_lang = word_origin, lang_origin

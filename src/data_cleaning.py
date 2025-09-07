@@ -122,9 +122,11 @@ if __name__ == "__main__":
         .fillna(df["lang_origin"])
     )
 
-    counts = df["lang_origin"].value_counts()
-    valid_langs = counts[counts >= 15].index
-    df = df[df["lang_origin"].isin(valid_langs)]
+    # counts = df["lang_origin"].value_counts()
+    # valid_langs = counts[counts >= 15].index
+    # df = df[df["lang_origin"].isin(valid_langs)]
 
     pd.set_option('display.max_rows', 500)
     print(df["lang_origin"].value_counts())
+    
+    df.to_csv(f"{DATA_DIR}/clean_dataset.csv", index=False)
